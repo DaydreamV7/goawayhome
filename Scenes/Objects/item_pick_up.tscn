@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://4b2uqhc8h1sf"]
+
+[ext_resource type="Script" uid="uid://b0m0n7p6g3a8l" path="res://Scripts/Objects/item_pickup.gd" id="1_c045o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j6rpy"]
+
+[node name="ItemPickup" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 256
+script = ExtResource("1_c045o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j6rpy")
+debug_color = Color(0, 0.6, 0.7, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_j6rpy")
+debug_color = Color(0, 0.6, 0.7, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

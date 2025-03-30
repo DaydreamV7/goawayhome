@@ -1,0 +1,6 @@
+res://Scenes/System/player_hud.tscn
+res://Resource/Heart.tres
+res://Scripts/System/player_hud.gd
+res://Scenes/Maps/room.tscn
+res://Scenes/Characters/player.tscn
+res://Scripts/Characters/player.gd

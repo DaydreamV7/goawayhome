@@ -39,9 +39,12 @@ var is_hurt := false as bool
 @onready var calm_down_timer: Timer = $CalmDownTimer
 @onready var player_check: RayCast2D = $Graphics/PlayerCheck
 @onready var hitbox: HitBox = $Graphics/Hitbox
+@onready var hp_number: Label = $Control/HPNumber
+
 
 func _ready() -> void:
 	hitbox.damaged.connect(_on_hitbox_damaged)
+	hp_number.text = str(stats.max_health)
 	
 	
 func can_see_player() -> bool:
@@ -131,6 +134,7 @@ func transition_state(from: State,to: State) -> void:
 func _on_hitbox_damaged(hurt_box: HurtBox) -> void:
 	is_hurt = true
 	stats.health -= hurt_box.damage
+	hp_number.text = str(stats.health)
 	var dir := hurt_box.global_position.direction_to(global_position)
 	velocity = dir * KNOCKBACK_AMOUNT
 	if dir.x >0:

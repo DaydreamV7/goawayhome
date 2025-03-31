@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://iwvpn7v2yn8l"]
+[gd_scene load_steps=3 format=3 uid="uid://iwvpn7v2yn8l"]
 
 [ext_resource type="Script" uid="uid://5dth8g7uvt67" path="res://Scripts/System/player_hud.gd" id="1_pt0yp"]
+[ext_resource type="Texture2D" uid="uid://pjr4ct2g4trs" path="res://assets/Object/Preview Keyboard & Mouse.png" id="2_aa66u"]
 
 [node name="PlayerHud" type="CanvasLayer"]
 process_mode = 3
@@ -86,3 +87,78 @@ text = "继续"
 [node name="ExitButton" type="Button" parent="Control/GameOver/VBoxContainer"]
 layout_mode = 2
 text = "退出游戏"
+
+[node name="Prompts" type="Control" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="移动" type="Label" parent="Control/Prompts"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "移动："
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Prompts/移动"]
+position = Vector2(55, 12)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_aa66u")
+region_enabled = true
+region_rect = Rect2(75, 161, 32, 32)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control/Prompts/移动"]
+position = Vector2(55, 28)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_aa66u")
+region_enabled = true
+region_rect = Rect2(75, 225, 32, 32)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Control/Prompts/移动"]
+position = Vector2(39, 28)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_aa66u")
+region_enabled = true
+region_rect = Rect2(43, 225, 32, 32)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Control/Prompts/移动"]
+position = Vector2(70, 28)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_aa66u")
+region_enabled = true
+region_rect = Rect2(107, 225, 32, 32)
+
+[node name="攻击" type="Label" parent="Control/Prompts"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 147.0
+offset_right = 195.0
+offset_bottom = 23.0
+text = "移动："
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Prompts/攻击"]
+position = Vector2(56, 19)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_aa66u")
+region_enabled = true
+region_rect = Rect2(139, 385, 32, 32)
+
+[node name="跳跃" type="Label" parent="Control/Prompts"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 71.0
+offset_right = 119.0
+offset_bottom = 23.0
+text = "跳跃："
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Prompts/跳跃"]
+position = Vector2(56, 19)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_aa66u")
+region_enabled = true
+region_rect = Rect2(427, 225, 32, 32)

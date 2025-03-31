@@ -40,6 +40,7 @@ func update_hp() -> void:
 	#await fade_to_black()
 
 func continue_game() -> void:
+	PlayerManager.player.relife()
 	hide_game_over_screen()
 
 func exit_screen() -> void:

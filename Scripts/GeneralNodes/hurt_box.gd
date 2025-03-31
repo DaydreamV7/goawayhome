@@ -13,6 +13,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func change_damage() -> void:
+	damage = 3
 
 func hit_entered( a : Area2D ) -> void:
 	if a is HitBox:

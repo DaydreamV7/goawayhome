@@ -30,10 +30,12 @@ const Air_Acceleration := Speed / 0.1
 @onready var stats: Stats = $Stats
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hitbox: HitBox = $Graphics/Hitbox
+@onready var hurt_box: HurtBox = $Graphics/Weapon/HurtBox
+
 
 func _ready() -> void:
 	hitbox.damaged.connect(_on_hitbox_damaged)
-	
+	PlayerHud.updatehp.emit()
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
@@ -52,6 +54,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("test"):
 		stats.health -= 1
+		hurt_box.change_damage()
 		PlayerHud.updatehp.emit()
 
 func stand(gravity:float , delta: float) -> void:
@@ -140,7 +143,7 @@ func transition_state(from: State,to: State) -> void:
 			animation_player.play("running")
 		State.JUMP:
 			animation_player.play("jump")
-			velocity.y = Jump
+			#velocity.y = Jump
 			coyote_timer.stop()
 			jump_request_timer.stop()
 		State.STUN:
@@ -158,10 +161,14 @@ func transition_state(from: State,to: State) -> void:
 #
 #
 func _on_hitbox_damaged(hurt_box: HurtBox) -> void:
-	PlayerHud.updatehp.emit()
 	is_hurt = true
 	stats.health -= hurt_box.damage
+	PlayerHud.updatehp.emit()
 	var dir := hurt_box.global_position.direction_to(global_position)
 	velocity = dir * 400
 	velocity.y = -300
 	pass
+
+func relife() -> void:
+	stats.health += stats.max_health
+	PlayerHud.updatehp.emit()

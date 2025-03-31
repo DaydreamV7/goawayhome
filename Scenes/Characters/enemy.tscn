@@ -175,3 +175,23 @@ libraries = {
 [node name="CalmDownTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HP" type="Label" parent="Control"]
+offset_left = -24.0
+offset_top = -80.0
+offset_right = 16.0
+offset_bottom = -57.0
+text = "HP : "
+
+[node name="HPNumber" type="Label" parent="Control"]
+offset_left = 9.0
+offset_top = -80.0
+offset_right = 49.0
+offset_bottom = -57.0
+text = "5"

@@ -2,9 +2,10 @@ class_name Wardrobe
 extends Node2D
 
 @export var next_teleport : Wardrobe
+@export var exist_timer : float = 30.0
 
+var exist_wardrobe : Array[ Wardrobe ]
 
-var exist_timer : float = 15.0
 
 @onready var transmit_area: Area2D = $TransmitArea
 @onready var label: Label = $Label
@@ -13,6 +14,9 @@ var exist_timer : float = 15.0
 func _ready() -> void:
 	transmit_area.area_entered.connect( _on_area_enter )
 	transmit_area.area_exited.connect( _on_area_exit )
+	for i in get_parent().get_children():
+		if i is Wardrobe:
+			exist_wardrobe.append( i )
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -34,6 +38,7 @@ func _on_area_exit( _a : Area2D ) -> void:
 	pass
 
 func player_interact() -> void:
+	next_teleport = exist_wardrobe[ randi_range( 0 , exist_wardrobe.size()-1 ) ]
 	if transmit_area.monitoring == true:
 		PlayerManager.player.global_position = next_teleport.global_position
 		transmit_area.monitoring = false
